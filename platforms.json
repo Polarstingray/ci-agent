@@ -1,0 +1,12 @@
+{
+    "_comment": "Canonical platform vocabulary shared by repman-ci (producer) and repman (consumer). Byte-identical copy in both repos; see PACKAGE_INDEX_CONTRACT.md §1. Each entry is an os_arch identifier used as the builder name, the index targets key, and the <os>_<arch> segment of artifact filenames.",
+    "platforms": [
+        { "os_arch": "ubuntu_amd64", "os": "ubuntu", "arch": "amd64" },
+        { "os_arch": "ubuntu_arm64", "os": "ubuntu", "arch": "arm64" },
+        { "os_arch": "arch_amd64", "os": "arch", "arch": "amd64" },
+        { "os_arch": "debian_amd64", "os": "debian", "arch": "amd64" },
+        { "os_arch": "alpine_amd64", "os": "alpine", "arch": "amd64" },
+        { "os_arch": "macos_arm64", "os": "macos", "arch": "arm64" },
+        { "os_arch": "windows_amd64", "os": "windows", "arch": "amd64" }
+    ]
+}

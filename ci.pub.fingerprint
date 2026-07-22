@@ -1,0 +1,6 @@
+# Canonical repman-ci signing key fingerprint (minisign).
+# The trust root ci.pub in this repo MUST match these values, and MUST be the
+# public half of the key repman-ci signs with (repman-ci/keys/ci.key).
+# See PACKAGE_INDEX_CONTRACT.md §7. Byte-identical copy in the repman repo.
+keyid=7C3341BABBA99FE3
+sha256=dc4fdca59180c5d4af9dfc8ef2766c414529e4f4880efb6a41e326e878059bee
