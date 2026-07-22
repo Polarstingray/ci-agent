@@ -39,11 +39,19 @@ Server Index  →  Repman package manager (Client, update / install)
 
 ## Artifact Model
 
-Each release produces **exactly one canonical artifact** per platform:
+Each release produces **exactly one canonical artifact** per platform. The
+filename joins every part with underscores (the only dash is the `<name>-v...`
+git *tag*, not the filename):
 
 ```
-<name>-v<version>-<os>-<arch>.tar.gz
+<name>_v<version>_<os>_<arch>.tar.gz
 ```
+
+> The exact filename grammar, index schema, and URL forms that `repman-ci`
+> shares with the `repman` client are defined in
+> [`PACKAGE_INDEX_CONTRACT.md`](PACKAGE_INDEX_CONTRACT.md) — the single source of
+> truth for the producer/consumer interface. Keep it in sync with the copy in
+> the `repman` repo.
 
 The artifact contains:
 
@@ -230,6 +238,26 @@ Clients:
 4. Extract and install
 
 ---
+
+## Testing
+
+```bash
+./tests/run_tests.sh              # Python unit + bats integration/e2e (+ cross-repo e2e if repman is present)
+./tests/run_tests.sh --unit-only  # Python unit tests only
+```
+
+**Cross-repo e2e** (`tests/e2e/cross_repo_install.sh`) is a real, hermetic test
+of the full publisher→client workflow: it builds and signs an artifact into a
+local `file://` release using this pipeline's real code + minisign, then drives
+the actual `repman` client to fetch, verify, and install it — no GitHub, Docker,
+or mocks. It runs automatically when the `repman` repo is a sibling checkout, or:
+
+```bash
+REPMAN_DIR=/path/to/repman ./tests/e2e/cross_repo_install.sh
+```
+
+This is the executable counterpart to
+[`PACKAGE_INDEX_CONTRACT.md`](PACKAGE_INDEX_CONTRACT.md).
 
 ## Security Model
 

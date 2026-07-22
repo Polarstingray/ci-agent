@@ -1,0 +1,31 @@
+{
+    "affirm": {
+        "latest": "1.2.0",
+        "versions": {
+            "1.0.0": {
+                "targets": {
+                    "ubuntu_amd64": {
+                        "url": "https://github.com/Polarstingray/packages/releases/download/affirm-v1.0.0",
+                        "signature": "affirm_v1.0.0_ubuntu_amd64.tar.gz.minisig",
+                        "sha256": "affirm_v1.0.0_ubuntu_amd64.tar.gz.sha256"
+                    }
+                }
+            },
+            "1.2.0": {
+                "notes": "adds arm64 target",
+                "targets": {
+                    "ubuntu_amd64": {
+                        "url": "https://github.com/Polarstingray/packages/releases/download/affirm-v1.2.0",
+                        "signature": "affirm_v1.2.0_ubuntu_amd64.tar.gz.minisig",
+                        "sha256": "affirm_v1.2.0_ubuntu_amd64.tar.gz.sha256"
+                    },
+                    "ubuntu_arm64": {
+                        "url": "https://github.com/Polarstingray/packages/releases/download/affirm-v1.2.0",
+                        "signature": "affirm_v1.2.0_ubuntu_arm64.tar.gz.minisig",
+                        "sha256": "affirm_v1.2.0_ubuntu_arm64.tar.gz.sha256"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -64,6 +64,22 @@ if [[ "$RUN_SHELL" == 1 ]]; then
     fi
 fi
 
+# --- Cross-repo e2e (repman-ci -> repman), real crypto, no mocks ---
+# Runs only when the repman client repo is available; otherwise skipped so the
+# default suite has no hard dependency on a sibling checkout.
+if [[ "$RUN_SHELL" == 1 ]]; then
+    REPMAN_DIR="${REPMAN_DIR:-$(cd "$REPO_ROOT/../repman" 2>/dev/null && pwd || true)}"
+    if [[ -n "$REPMAN_DIR" && -d "$REPMAN_DIR" ]]; then
+        echo "=== Cross-repo e2e (repman-ci -> repman) ==="
+        REPMAN_DIR="$REPMAN_DIR" "$TESTS_DIR/e2e/cross_repo_install.sh" || FAIL=1
+        echo ""
+    else
+        echo "NOTE: repman client repo not found — skipping cross-repo e2e."
+        echo "  Set REPMAN_DIR=/path/to/repman to enable it."
+        echo ""
+    fi
+fi
+
 if [[ "$FAIL" == 1 ]]; then
     echo "=== TESTS FAILED ==="
     exit 1
